@@ -11,4 +11,10 @@
     >.
   </p>
   <p><strong>It's not an official extension.</strong></p>
+
+  <h2>Privacy Policy</h2>
+  <p>
+    We do not collect or store any user identifiable information. This
+    extensions uses the `chrome.sync` API to store the extension settings.
+  </p>
 </div>

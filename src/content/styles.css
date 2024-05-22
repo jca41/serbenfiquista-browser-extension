@@ -1,1 +1,10 @@
+.sb-mute-user-blur {
+  filter: blur(10px) opacity(0.3) brightness(0.8) !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
 
+.sb-mute-user-hide {
+  display: none !important;
+  visibility: hidden !important;
+}

@@ -1,4 +1,5 @@
 import { storage, type IStorage } from "../storage";
+import "./styles.css";
 
 function sbIsPoster(
   postEl: HTMLElement,
@@ -39,6 +40,9 @@ function sbGetPosts() {
   return { topic: topicPosts, best: bestOfPosts };
 }
 
+const BLUR_CL = "sb-mute-user-blur";
+const HIDE_CL = "sb-mute-user-hide";
+
 function sbMuteUsers({ on, blur, users }: IStorage["muteUsers"]) {
   if (!on || !users?.length) {
     return;
@@ -48,15 +52,13 @@ function sbMuteUsers({ on, blur, users }: IStorage["muteUsers"]) {
 
   topic.forEach((post) => {
     if (sbIsMarkedPost(post, users)) {
-      post?.parentElement?.classList.add(
-        blur ? "sb-ignore-user-blur" : "sb-ignore-user-hide"
-      );
+      post?.parentElement?.classList.add(blur ? BLUR_CL : HIDE_CL);
     }
   });
 
   best.forEach((post) => {
     if (sbIsMarkedPost(post, users)) {
-      post.classList.add(blur ? "sb-ignore-user-blur" : "sb-ignore-user-hide");
+      post.classList.add(blur ? BLUR_CL : HIDE_CL);
     }
   });
 }
