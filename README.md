@@ -2,7 +2,9 @@
 
 This is a companion extension for SerBenfiquista forum. **This is not an official extension.**
 
-## User mute
+## Features
+
+### User mute
 
 The current way of ignoring users in SB is a bit flawed as you can still see quotes from the ignored users. This extension targets the normal topic pages and best messages section. It will hide both direct and quoted messages.
 
