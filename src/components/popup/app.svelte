@@ -20,7 +20,7 @@
   }
 </script>
 
-<div class="bg-base-100 h-96 min-w-[500px] p-4">
+<div class="bg-base-100 h-[400px] w-[500px] p-4">
   {#if selectedTab === 0}
     <MuteUsers />
   {:else if selectedTab === 1}

@@ -62,11 +62,7 @@ function sbMuteUsers({ on, blur, users }: IStorage["muteUsers"]) {
 }
 
 async function sbStart() {
-  console.log("HELLO");
-
   const settings = await storage.get();
-
-  console.log("SETTINGS", settings);
 
   sbMuteUsers(settings?.muteUsers);
 }

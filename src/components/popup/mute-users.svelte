@@ -5,14 +5,17 @@
 
   function addUser() {
     const trimmedUser = userToAdd.trim();
-
     if (!trimmedUser) {
       return;
     }
 
     $appStore.muteUsers.users = [...$appStore.muteUsers.users, trimmedUser];
-
     userToAdd = "";
+  }
+
+  function removeUser(index: number) {
+    $appStore.muteUsers.users.splice(index, 1);
+    $appStore.muteUsers.users = $appStore.muteUsers.users;
   }
 </script>
 
@@ -40,6 +43,31 @@
   <div class="join">
     <input class="input input-bordered join-item grow" bind:value={userToAdd} />
     <button class="btn join-item" on:click={addUser}>Add user</button>
+  </div>
+  <div class="flex flex-row flex-wrap gap-2 pt-4">
+    {#each $appStore.muteUsers.users as user, index}
+      <div class="badge badge-lg badge-neutral gap-1">
+        <span>{user}</span>
+        <button on:click={() => removeUser(index)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="inline-block w-4 h-4 stroke-current"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path></svg
+          >
+        </button>
+      </div>
+    {:else}
+      <div class="prose">
+        <p>No users currently muted.</p>
+      </div>
+    {/each}
   </div>
 </div>
 <div role="alert" class="alert mt-8">

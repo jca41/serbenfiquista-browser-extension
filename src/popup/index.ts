@@ -11,8 +11,6 @@ function render() {
     storage.get().then((data) => {
       appStore.set(data);
 
-      console.log(">>>>>>", data);
-
       new Popup({
         target,
       });
