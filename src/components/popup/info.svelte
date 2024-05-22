@@ -1,0 +1,14 @@
+<div class="prose">
+  <h1>About</h1>
+  <p>
+    This is a companion extension to be used on the forum <a
+      target="_blank"
+      href="https://serbenfiquista.com/forum/">SerBenfiquista</a
+    >. It was developed by user
+    <a
+      href="https://serbenfiquista.com/forum/index.php?action=profile;u=35690"
+      target="_blank">jpcafe</a
+    >.
+  </p>
+  <p><strong>It's not an official extension.</strong></p>
+</div>

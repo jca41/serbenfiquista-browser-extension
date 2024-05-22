@@ -1,20 +1,23 @@
-import Options from "../components/Options.svelte";
-import { storage } from "../storage";
+import Popup from "../components/popup/app.svelte";
+import { appStore, storage } from "../storage";
 
 // Action popup
 // https://developer.chrome.com/docs/extensions/reference/action/
 
 function render() {
-    const target = document.getElementById("app");
+  const target = document.getElementById("app");
 
-    if (target) {
-        storage.get().then(({ count }) => {
-            new Options({
-                target,
-                props: { count },
-            });
-        });
-    }
+  if (target) {
+    storage.get().then((data) => {
+      appStore.set(data);
+
+      console.log(">>>>>>", data);
+
+      new Popup({
+        target,
+      });
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", render);

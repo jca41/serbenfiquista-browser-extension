@@ -1,14 +1,74 @@
-import Overlay from "../components/Overlay.svelte";
-import { storage } from "../storage";
+import { storage, type IStorage } from "../storage";
 
-// Content scripts
-// https://developer.chrome.com/docs/extensions/mv3/content_scripts/
+function sbIsPoster(
+  postEl: HTMLElement,
+  users: IStorage["muteUsers"]["users"]
+) {
+  return users.includes(
+    postEl?.querySelector<HTMLAnchorElement>(".poster h4 a")?.innerText ?? ""
+  );
+}
 
-// Some global styles on the page
-import "./styles.css";
+function sbIsQuoted(
+  postEl: HTMLElement,
+  users: IStorage["muteUsers"]["users"]
+) {
+  let quoteHeaders: string[] = [];
+  postEl
+    .querySelectorAll<HTMLElement>("cite a")
+    .forEach((el) => quoteHeaders.push(el?.innerText));
 
-// Some JS on the page
-storage.get().then(console.log);
+  if (!quoteHeaders.length) return false;
 
-// Some svelte component on the page
-new Overlay({ target: document.body });
+  return quoteHeaders.some((header) =>
+    users.some((user) => header.includes(user))
+  );
+}
+
+function sbIsMarkedPost(
+  postEl: HTMLElement,
+  users: IStorage["muteUsers"]["users"]
+) {
+  return sbIsPoster(postEl, users) || sbIsQuoted(postEl, users);
+}
+
+function sbGetPosts() {
+  const topicPosts = document.querySelectorAll<HTMLElement>(".post_wrapper");
+  const bestOfPosts = document.querySelectorAll<HTMLElement>(".core_posts");
+
+  return { topic: topicPosts, best: bestOfPosts };
+}
+
+function sbMuteUsers({ on, blur, users }: IStorage["muteUsers"]) {
+  if (!on || !users?.length) {
+    return;
+  }
+
+  const { topic, best } = sbGetPosts();
+
+  topic.forEach((post) => {
+    if (sbIsMarkedPost(post, users)) {
+      post?.parentElement?.classList.add(
+        blur ? "sb-ignore-user-blur" : "sb-ignore-user-hide"
+      );
+    }
+  });
+
+  best.forEach((post) => {
+    if (sbIsMarkedPost(post, users)) {
+      post.classList.add(blur ? "sb-ignore-user-blur" : "sb-ignore-user-hide");
+    }
+  });
+}
+
+async function sbStart() {
+  console.log("HELLO");
+
+  const settings = await storage.get();
+
+  console.log("SETTINGS", settings);
+
+  sbMuteUsers(settings?.muteUsers);
+}
+
+sbStart();
