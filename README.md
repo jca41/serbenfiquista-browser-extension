@@ -1,43 +1,13 @@
-# Svelte Typescript Chrome Extension Boilerplate
+# SerBenfiquista Companion browser extension
 
-> Boilerplate for Chrome Extension Svelte Typescript project
+This is a companion extension for SerBenfiquista forum. **This is not an official extension.**
 
-## Features
+## User mute
 
--   [Svelte](https://svelte.dev/)
--   [TypeScript](https://www.typescriptlang.org/)
--   [Vite](https://vitejs.dev/)
--   [CRXJS Vite Plugin](https://github.com/crxjs/chrome-extension-tools/blob/main/packages/vite-plugin/README.md)
--   [Chrome Extensions Manifest V3](https://developer.chrome.com/docs/extensions/mv3/intro/)
+The current way of ignoring users in SB is a bit flawed as you can still see quotes from the ignored users. This extension targets the normal topic pages and best messages section. It will hide both direct and quoted messages.
 
-## Examples of integrations
+For this purpose, this extension does not modify or alter the original page html. It uses CSS to hide the content instead.
 
--   [Tailwind CSS](https://tailwindcss.com/) – is in the [tailwindcss](https://github.com/NekitCorp/chrome-extension-svelte-typescript-boilerplate/tree/tailwindcss) branch
+## Privacy Policy
 
-## Development
-
-```bash
-# install dependencies
-npm i
-
-# build files to `/dist` directory
-# HMR for extension pages and content scripts
-npm run dev
-```
-
-## Build
-
-```bash
-# build files to `/dist` directory
-$ npm run build
-```
-
-## Load unpacked extensions
-
-[Getting Started Tutorial](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
-
-1. Open the Extension Management page by navigating to `chrome://extensions`.
-2. Enable Developer Mode by clicking the toggle switch next to `Developer mode`.
-3. Click the `LOAD UNPACKED` button and select the `/dist` directory.
-
-![Example](https://wd.imgix.net/image/BhuKGJaIeLNPW9ehns59NfwqKxF2/vOu7iPbaapkALed96rzN.png?auto=format&w=571)
+We do not collect or store any user identifiable information. This extensions uses the `chrome.sync` API to store the extension settings.
