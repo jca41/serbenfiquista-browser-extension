@@ -21,11 +21,13 @@
 </script>
 
 <div class="bg-base-100 h-[400px] w-[500px] p-4">
-  {#if selectedTab === 0}
-    <MuteUsers />
-  {:else if selectedTab === 1}
-    <Info />
-  {/if}
+  <div class="pb-4">
+    {#if selectedTab === 0}
+      <MuteUsers />
+    {:else if selectedTab === 1}
+      <Info />
+    {/if}
+  </div>
   <div class="btm-nav btm-nav-sm">
     <button on:click={withToggleTab(0)} class:active={selectedTab === 0}>
       <svg
