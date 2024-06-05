@@ -1,7 +1,7 @@
 {
   "name": "serbenfiquista-browser-extension",
   "description": "Companion extension for SerBenfiquista forum",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "repository": {
     "type": "git",
