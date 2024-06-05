@@ -1,5 +1,4 @@
-<div class="prose">
-  <h1>About</h1>
+<div class="prose prose-invert prose-sm">
   <p>
     This is a companion extension to be used on the forum <a
       target="_blank"
@@ -11,7 +10,6 @@
     >.
   </p>
   <p><strong>It's not an official extension.</strong></p>
-
   <h2>Privacy Policy</h2>
   <p>
     We do not collect or store any user identifiable information. This

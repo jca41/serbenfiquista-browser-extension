@@ -9,15 +9,15 @@ const config = {
     themes: [
       {
         benfica: {
-          primary: "#ffffff",
+          primary: "#E1483F",
 
-          secondary: "#000000",
+          secondary: "#ffffff",
 
           accent: "#facc15",
 
           neutral: "#1f181b",
 
-          "base-100": "#c30100",
+          "base-100": "#222",
 
           info: "#1d4ed8",
 
